@@ -46,3 +46,5 @@ Moodle is provided freely as open source software, under version 3 of the GNU Ge
 [10]: https://moodle.com/partners
 [11]: https://moodle.com/cloud
 [12]: https://moodledev.io/general/license
+
+ Moodle documentation for installing on Debian is not correct . We need to refer to this document [Moodle additional steps ](https://docs.moodle.org/401/en/Step-by-step_Install_Guide_for_Debian )
