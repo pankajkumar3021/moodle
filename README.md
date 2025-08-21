@@ -64,7 +64,7 @@ echo "Step 1 has completed."
 
 
 # Step 2 Clone the Moodle repository into /opt and copy to /var/www
-# Use MOODLE_401_STABLE branch as Debian 11 ships with php8.3
+# Use MOODLE_500_STABLE branch as Debian 11 ships with php8.3
 echo "Cloning Moodle repository into /opt and copying to /var/www/"  
 echo "Be patient, this can take several minutes."  
 cd /var/www  
@@ -75,10 +75,10 @@ echo "Step 2 has completed."
 
 
 # Step 3 Directories, ownership, permissions, php.ini changes and virtual hosts 
-sudo mkdir -p /var/www/moodledata  
-sudo chown -R www-data /var/www/moodledata  
-sudo chmod -R 777 /var/www/moodledata  
-sudo chmod -R 755 /var/www/moodle  
+sudo mkdir -p /var/www/html/moodledata  
+sudo chown -R www-data /var/www/html/moodledata  
+sudo chmod -R 777 /var/www/html/moodledata  
+sudo chmod -R 755 /var/www/html/moodle  
 # Change the Apache DocumentRoot using sed so Moodle opens at http://webaddress  
 sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/moodle.conf  
 sudo sed -i 's|/var/www/html|/var/www/moodle|g' /etc/apache2/sites-available/moodle.conf  
@@ -96,7 +96,7 @@ echo "Step 3 has completed."
 
 # Step 4 Set up cron job to run every minute  
 echo "Cron job added for the www-data user."  
-CRON_JOB="* * * * * /var/www/moodle/admin/cli/cron.php >/dev/null"  
+CRON_JOB="* * * * * /var/www/html/index.nginx-debian.htmlmoodle/admin/cli/cron.php >/dev/null"  
 echo "$CRON_JOB" > /tmp/moodle_cron  
 sudo crontab -u www-data /tmp/moodle_cron  
 sudo rm /tmp/moodle_cron  
