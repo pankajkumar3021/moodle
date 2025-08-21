@@ -50,14 +50,18 @@ Moodle is provided freely as open source software, under version 3 of the GNU Ge
  Moodle documentation for installing on Debian is not correct . We need to refer to this document [Moodle additional steps ](https://docs.moodle.org/401/en/Step-by-step_Install_Guide_for_Debian )
 
 # Step 1 LAMP server installaton
+
 #Update the system and install git, Apache, PHP and modules required by Moodle
 sudo apt-get update
 sudo apt-get install -y apache2 php8.3 libapache2-mod-php8.3 php8.3-mysql graphviz aspell git 
 sudo apt-get install -y clamav php8.3-pspell php8.3-curl php8.3-gd php8.3-intl php8.3-mysql ghostscript
 sudo apt-get install -y php8.3-xml php8.3-xmlrpc php8.3-ldap php8.3-zip php8.3-soap php8.3-mbstring
+
+
 #Install Debian default database MariaDB 
 sudo apt-get install -y mariadb-server mariadb-client
 echo "Step 1 has completed."
+
 
 # Step 2 Clone the Moodle repository into /opt and copy to /var/www
 # Use MOODLE_401_STABLE branch as Debian 11 ships with php8.3
@@ -66,8 +70,9 @@ echo "Be patient, this can take several minutes."
 cd /var/www
 sudo git clone https://github.com/moodle/moodle.git
 cd moodle
-sudo git checkout -t origin/MOODLE_401_STABLE
+sudo git checkout -t origin/MOODLE_500_STABLE
 echo "Step 2 has completed."
+
 
 # Step 3 Directories, ownership, permissions, php.ini changes and virtual hosts 
 sudo mkdir -p /var/www/moodledata
@@ -81,9 +86,9 @@ sudo a2dissite 000-default.conf
 sudo a2ensite moodle.conf
 sudo systemctl reload apache2
 # Update the php.ini files, required to pass Moodle install check
-sudo sed -i 's/.*max_input_vars =.*/max_input_vars = 5000/' /etc/php/7.4/apache2/php.ini
-sudo sed -i 's/.*post_max_size =.*/post_max_size = 80M/' /etc/php/7.4/apache2/php.ini
-sudo sed -i 's/.*upload_max_filesize =.*/upload_max_filesize = 80M/' /etc/php/7.4/apache2/php.ini
+sudo sed -i 's/.*max_input_vars =.*/max_input_vars = 5000/' /etc/php/8.3/apache2/php.ini
+sudo sed -i 's/.*post_max_size =.*/post_max_size = 80M/' /etc/php/8.3/apache2/php.ini
+sudo sed -i 's/.*upload_max_filesize =.*/upload_max_filesize = 80M/' /etc/php/8.3/apache2/php.ini
 # Restart Apache to allow changes to take place
 sudo service apache2 restart
 echo "Step 3 has completed."
