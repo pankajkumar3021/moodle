@@ -176,8 +176,10 @@ sudo -u www-data /usr/bin/php /var/www/html/moodle/admin/cli/install.php   --non
 ### 1. Download Adaptable
 ```bash
 cd /var/www/html/moodle/theme
-sudo git clone https://github.com/moodle-an-hochschulen/moodle-theme_adaptable.git adaptable
-cd adaptable
+
+sudo wget https://moodle.org/plugins/download.php/37066/theme_adaptable_moodle50_2025040804.zip
+sudo unzip theme_adaptable_moodle50_20250408040804.zip
+sudo chown -R www-data:www-data adaptable/
 sudo git checkout MOODLE_404_STABLE
 cd ..
 ```
