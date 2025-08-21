@@ -96,7 +96,7 @@ echo "Step 3 has completed."
 
 # Step 4 Set up cron job to run every minute  
 echo "Cron job added for the www-data user."  
-CRON_JOB="* * * * * /var/www/html/index.nginx-debian.htmlmoodle/admin/cli/cron.php >/dev/null"  
+CRON_JOB="* * * * * /var/www/html/moodle/admin/cli/cron.php >/dev/null"  
 echo "$CRON_JOB" > /tmp/moodle_cron  
 sudo crontab -u www-data /tmp/moodle_cron  
 sudo rm /tmp/moodle_cron  
