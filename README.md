@@ -52,15 +52,15 @@ Moodle is provided freely as open source software, under version 3 of the GNU Ge
 # Step 1 LAMP server installaton
 #Update the system and install git, Apache, PHP and modules required by Moodle
 sudo apt-get update
-sudo apt-get install -y apache2 php7.4 libapache2-mod-php7.4 php7.4-mysql graphviz aspell git 
-sudo apt-get install -y clamav php7.4-pspell php7.4-curl php7.4-gd php7.4-intl php7.4-mysql ghostscript
-sudo apt-get install -y php7.4-xml php7.4-xmlrpc php7.4-ldap php7.4-zip php7.4-soap php7.4-mbstring
+sudo apt-get install -y apache2 php8.3 libapache2-mod-php8.3 php8.3-mysql graphviz aspell git 
+sudo apt-get install -y clamav php8.3-pspell php8.3-curl php8.3-gd php8.3-intl php8.3-mysql ghostscript
+sudo apt-get install -y php8.3-xml php8.3-xmlrpc php8.3-ldap php8.3-zip php8.3-soap php8.3-mbstring
 #Install Debian default database MariaDB 
 sudo apt-get install -y mariadb-server mariadb-client
 echo "Step 1 has completed."
 
 # Step 2 Clone the Moodle repository into /opt and copy to /var/www
-# Use MOODLE_401_STABLE branch as Debian 11 ships with php7.4
+# Use MOODLE_401_STABLE branch as Debian 11 ships with php8.3
 echo "Cloning Moodle repository into /opt and copying to /var/www/"
 echo "Be patient, this can take several minutes."
 cd /var/www
