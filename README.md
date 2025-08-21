@@ -67,7 +67,7 @@ echo "Step 1 has completed."
 # Use MOODLE_500_STABLE branch as Debian 11 ships with php8.3
 echo "Cloning Moodle repository into /opt and copying to /var/www/"  
 echo "Be patient, this can take several minutes."  
-cd /var/www  
+cd /var/www/html/  
 sudo git clone https://github.com/moodle/moodle.git  
 cd moodle  
 sudo git checkout -t origin/MOODLE_500_STABLE  
