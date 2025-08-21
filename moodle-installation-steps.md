@@ -207,66 +207,66 @@ Open Moodle in your browser and confirm **Adaptable** is applied.
 Further customization:  
 `Site administration → Appearance → Themes → Adaptable`
 ### 6. Moodle Safety measures
-1. Moodle Code Directory (/var/www/html/moodle)
+1. Moodle Code Directory (/var/www/html/moodle)  
 
-This contains Moodle’s PHP code.
+This contains Moodle’s PHP code.  
 
-The web server (www-data) should only read it, not modify it.
+The web server (www-data) should only read it, not modify it.  
 
-Ownership:
+Ownership:  
 
-sudo chown -R root:root /var/www/html/moodle
-
-
-Permissions:
-
-sudo find /var/www/html/moodle -type f -exec chmod 644 {} \;
-sudo find /var/www/html/moodle -type d -exec chmod 755 {} \;
+sudo chown -R root:root /var/www/html/moodle  
 
 
-Exception: The moodledata folder (see below).
+Permissions:  
 
-👉 This ensures your server can run the code but attackers (or even Moodle itself) cannot overwrite files if there’s a security flaw.
-
-2. Moodle Data Directory (/var/moodledata)
-
-This is where Moodle stores cache, sessions, uploaded files, temp files.
-
-It must be writable by the web server (www-data).
-
-Ownership:
-
-sudo chown -R www-data:www-data /var/moodledata
+sudo find /var/www/html/moodle -type f -exec chmod 644 {} \;  
+sudo find /var/www/html/moodle -type d -exec chmod 755 {} \;  
 
 
-Permissions:
+Exception: The moodledata folder (see below).  
 
-sudo find /var/moodledata -type f -exec chmod 664 {} \;
-sudo find /var/moodledata -type d -exec chmod 775 {} \;
+👉 This ensures your server can run the code but attackers (or even Moodle itself) cannot overwrite files if there’s a security flaw.  
+
+2. Moodle Data Directory (/var/moodledata)  
+
+This is where Moodle stores cache, sessions, uploaded files, temp files.  
+
+It must be writable by the web server (www-data).  
+
+Ownership:  
+
+sudo chown -R www-data:www-data /var/moodledata  
 
 
-⚡ Security Note: Never put moodledata inside /var/www/html/ (the web root) — it should always be outside web-accessible directories.
+Permissions:  
 
-3. Extra Security Hardening
-
-Disable direct access to config.php:
-
-sudo chmod 640 /var/www/html/moodle/config.php
+sudo find /var/moodledata -type f -exec chmod 664 {} \;  
+sudo find /var/moodledata -type d -exec chmod 775 {} \;  
 
 
-Prevent web access to .git, .env, or hidden files with Apache/Nginx rules.
+⚡ Security Note: Never put moodledata inside /var/www/html/ (the web root) — it should always be outside web-accessible directories.  
 
-Regularly update Moodle and dependencies.
+3. Extra Security Hardening  
+
+Disable direct access to config.php:  
+
+sudo chmod 640 /var/www/html/moodle/config.php  
+
+
+Prevent web access to .git, .env, or hidden files with Apache/Nginx rules.  
+
+Regularly update Moodle and dependencies.  
 
 ✅ In short:
 
-/var/www/html/moodle → read-only for web server (owned by root:root).
+/var/www/html/moodle → read-only for web server (owned by root:root).  
 
-/var/moodledata → writable by web server (owned by www-data).
+/var/moodledata → writable by web server (owned by www-data).  
 ---
 
-## ✅ Access Moodle
-Once installation completes, open:
+## ✅ Access Moodle  
+Once installation completes, open:  
 ```
 http://your-server-ip-or-domain
 ```
